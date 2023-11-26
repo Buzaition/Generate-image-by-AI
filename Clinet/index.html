@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/ico" href="./icon.ico" />
+    <link rel="icon" type="image/ico" href="./Img//icon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buzaition</title>
     <link rel="stylesheet" href="styles.css">
@@ -31,51 +31,8 @@
 
 
 
-    <!-- <script src="script.js"></script> -->
-    <script>
-        const input = document.getElementById('input');
-        const images = document.querySelector('.generated_images');
-        const loadingIndicator = document.querySelector('.loading-indicator');
+    <script src="script.js"></script>
 
-        const generateImages = async() => {
-            images.innerHTML = '';
-            loadingIndicator.style.display = 'block';
-
-            try {
-                const response = await fetch('/generate-images', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        prompt: input.value,
-                        n: 3,
-                        size: '256x256',
-                    }),
-                });
-
-                if (response.ok) {
-                    const receivedData = await response.json();
-
-                    receivedData.data.forEach(photo => {
-                        const div = document.createElement('div');
-                        const img = document.createElement('img');
-                        img.src = photo.url;
-                        div.append(img);
-                        images.append(div);
-                    });
-                } else {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error.message);
-            }
-
-            loadingIndicator.style.display = 'none';
-        };
-
-        document.getElementById('generateBtn').addEventListener('click', generateImages);
-    </script>
 </body>
 
 </html>

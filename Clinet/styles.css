@@ -113,7 +113,7 @@ button:hover {
 }
 
 #logo {
-    background-image: url(Logo1.png);
+    background-image: url(./Img/Logo1.png);
     overflow: hidden;
     background-size: 172%;
     background-repeat: no-repeat;
@@ -123,9 +123,9 @@ button:hover {
 
 @keyframes change {
     0% {
-        background-image: url(Logo1.png);
+        background-image: url(./Img/Logo1.png);
     }
     50% {
-        background-image: url(Logo2.png);
+        background-image: url(./Img/Logo2.png);
     }
 }
