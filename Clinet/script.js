@@ -2,15 +2,26 @@ const input = document.getElementById("input");
 const images = document.querySelector(".genrated_images");
 const loadingIndicator = document.querySelector(".loading-indicator");
 
+const API_KEYS = [
+    "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"
+];
+
+const getRandomApiKey = () => {
+    const randomIndex = Math.floor(Math.random() * API_KEYS.length);
+    return API_KEYS[randomIndex];
+};
+
 const generate_img = async() => {
     images.innerHTML = "";
     loadingIndicator.style.display = "block";
+    const apiKey = getRandomApiKey();
 
     try {
-        const response = await fetch("https://your-render-app.onrender.com/generate-images", {
+        const response = await fetch("https://api.openai.com/v1/images/generations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
                 prompt: input.value,
